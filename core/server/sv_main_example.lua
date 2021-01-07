@@ -16,7 +16,9 @@ end)
 
 -- Registering the callbacks (Server Callbacks).
 function registerCallbacks()
-    Callbacks:RegisterCallback('Test:ServerCallback', function(data, cb)
+    Callbacks:RegisterCallback('Test:ServerCallback', function(data, source, cb)
+        local src = source
+        -- Do stuff with src
         print(data)
         cb('Client Recieved Data')
     end)

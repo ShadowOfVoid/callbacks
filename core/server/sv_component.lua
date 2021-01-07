@@ -25,8 +25,9 @@ Callbacks = {
             sv_Callbacks[name] = cb
             RegisterServerEvent(e)
             AddEventHandler(e, function(args)
-                sv_Callbacks[name](args, function(data)
-                    TriggerClientEvent(e.. '_return', source, data)
+                local src = source
+                sv_Callbacks[name](args, src, function(data)
+                    TriggerClientEvent(e.. '_return', src, data)
                 end)
             end)
         end
